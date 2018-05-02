@@ -1,25 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
+<!--importing additional assets-->
+    <link href="https://fonts.googleapis.com/css?family=Ovo|Quattrocento+Sans" rel="stylesheet">
     <meta charset="utf-8">
     <title>Tapped In</title>
   </head>
   <body>
+    <div class="age-limit" *ngIf="visible">
+      <h1>Welcome to {{title}}</h1>
+      <h1>Are you over the age of 21?</h1>
+      <button type="button" (click)= 'clickYes()' class="btn btn-success">Yes</button>
+      <button type="button" (click)= 'clickNo()' class="btn btn-danger">No</button>
+      <p><sub>Click here if you are an employee.<input type="checkbox" ng-model="checked"></sub></p>
+    </div>
     <div class="container-fluid">
-      <div class="jumbotron age-limit">
-        <h3>Are you over the age of 21?</h3>
-        <button type="button" name="button" class="btn btn-success">Yes</button>
-        <button type="button" name="button" class="btn btn-danger">No</button>
-        <p><sub>Click here if you are an employee.</sub></p>
-      </div>
-      <div class="employee-login">
-        <app-login></app-login>
+      <div class="employee-login" ng-show="checked">
+        <form class="jumbotron">
+          <label>Please enter employee PIN</label>
+          <p><input type="text" maxlength="4" required></p>
+          <button type="button" class="btn btn-info">Submit</button>
+        </form>
       </div>
       <div class="employee-portal">
-        <app-employee></app-employee>
+        <div class="card">
+          <div class="card-header">
+            <h2>Tap Inventory</h2>
+            <h4>Current Till: ${{currentTill.start}}</h4>
+            <h4>Net profit: ${{currentTill.netProfit}}</h4>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li [class]="refill(currentTap)" *ngFor="let currentTap of taps"><button type="button" class="btn btn-info" (click)="editTap(currentTap)">Edit</button><button class="btn btn-success" (click)="sellBeer(currentTap)">Sell pint</button> {{currentTap.name}} by {{currentTap.brand}} -- Price: ${{currentTap.price}} -- Volume: {{currentTap.volume}}/124 </li>
+            </ul>
+            <button class="btn btn-primary">Add inventory</button>
+            <div class="edit-taps" *ngIf="selectedTap">
+              <input [(ngModel)]="selectedTap.name" placeholder="Beer name">
+              <input [(ngModel)]="selectedTap.brand" placeholder="Brewery">
+              <input [(ngModel)]="selectedTap.price" placeholder="Brewery">
+              <input [(ngModel)]="selectedTap.alcohol" placeholder="ABV">
+              <input [(ngModel)]="selectedTap.volume" placeholder="Volume">
+              <button class="btn btn-info" (click)="finishEdit()">Finish</button>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="user-portal">
-        <app-customer></app-customer>
       </div>
     </div>
   </body>
