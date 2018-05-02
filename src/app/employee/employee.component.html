@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="card-header">
+    <h2>Tap Inventory</h2>
+    <h4>Current Till: {{currentTill.start}}</h4>
+    <h4>Net profit: {{currentTill.netProfit}}</h4>
+  </div>
+  <div class="card-body">
+    <ul>
+      <li [class]="refill(currentTap)" *ngFor="let currentTap of taps"><button type="button" class="btn btn-info">Edit</button><button class="btn btn-success">Sell pint</button> {{currentTap.name}} by {{currentTap.brand}} -- Price: ${{currentTap.price}} -- Volume: {{currentTap.volume}}/124 </li>
+    </ul>
+    <button name="button">Add inventory</button>
+  </div>
+</div>

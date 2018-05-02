@@ -6,16 +6,24 @@
   </head>
   <body>
     <div class="container-fluid">
-      <div class="age-limit">
+      <div class="jumbotron age-limit">
         <h3>Are you over the age of 21?</h3>
-        <button type="button" name="button">Yes</button>
-        <button type="button" name="button">No</button>
+        <button type="button" name="button" class="btn btn-success">Yes</button>
+        <button type="button" name="button" class="btn btn-danger">No</button>
+        <p><sub>Click here if you are an employee.</sub></p>
+      </div>
+      <div class="employee-login">
+        <form class="jumbotron">
+          <label>Please enter employee PIN</label>
+          <p><input type="text" maxlength="4" required></p>
+          <button type="button" class="btn btn-info">Submit</button>
+        </form>
       </div>
       <div class="employee-portal">
-
+        <app-employee></app-employee>
       </div>
       <div class="user-portal">
-
+        <app-customer></app-customer>
       </div>
     </div>
   </body>

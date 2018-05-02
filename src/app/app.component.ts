@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Tapped In';
+  selectedTap = null;
+  editTap(clickedTap){
+    this.selectedTap = clickedTap;
+  }
+  finishEdit(){
+    this.selectedTap = null;
+  }
 }
