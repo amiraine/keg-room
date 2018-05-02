@@ -31,9 +31,18 @@
           </div>
           <div class="card-body">
             <ul>
-              <li [class]="refill(currentTap)" *ngFor="let currentTap of taps"><button type="button" class="btn btn-info" (click)="editTap(currentTap)">Edit</button><button class="btn btn-success" (click)="sellBeer(currentTap)">Sell pint</button> {{currentTap.name}} by {{currentTap.brand}} -- Price: ${{currentTap.price}} -- Volume: {{currentTap.volume}}/124 </li>
+              <li [class]="refill(currentTap)" *ngFor="let currentTap of taps"><button type="button" class="btn btn-info" (click)="editTap(currentTap)">Edit</button><button class="btn btn-success" (click)="sellBeer(currentTap)">Sell pint</button> {{currentTap.name}} by {{currentTap.brand}}-- ABV: {{currentTap.alcohol}} -- Price: ${{currentTap.price}} -- Volume: {{currentTap.volume}}/124 </li>
             </ul>
-            <button class="btn btn-primary">Add inventory</button>
+            <button class="btn btn-primary" (click)="displayAddTap()">Add inventory</button>
+            <div class="add-taps" *ngIf="addTap">
+              <form>
+                <input type="text" [(ngModel)]='new-name' placeholder="Beer name">
+                <input type="text" [(ngModel)]='new-brand' placeholder="Brand">
+                <input type="number" [(ngModel)]='new-price' placeholder="Price per pint">
+                <input type="number" [(ngModel)]='new-abv' placeholder="ABV%">
+                <button class="btn btn-secondary" (click)="addNewTap(new-name,newbrand,new-number,new-price,124)">Submit</button>
+              </form>
+            </div>
             <div class="edit-taps" *ngIf="selectedTap">
               <input [(ngModel)]="selectedTap.name" placeholder="Beer name">
               <input [(ngModel)]="selectedTap.brand" placeholder="Brewery">

@@ -44,18 +44,19 @@ export class AppComponent {
   finishEdit(){
     this.selectedTap = null;
   }
+  addTap = false;
+  displayAddTap(){
+    this.addTap = true;
+  }
   addNewTap(name,brand,price,alcohol,volume){
     let newTap = new Taps(name,brand,price,alcohol,124);
     this.taps.push(newTap);
   }
-  //cash money
   currentTill = new Till(150,0,0);
-  sellBeer(currentTap,currentTill){
+  //cash money
+  sellBeer(currentTap){
     this.selectedTap = currentTap;
     currentTap.volume --; //remove pint from volume
-    currentTill.end += currentTap.price; //add price to till
-    let soldBeer = [currentTap.volume,currentTill.end, currentTill.netProfit]
-    return soldBeer;
   }
   // authenticate(userPin){
   //   const employeePin = 'beer';
