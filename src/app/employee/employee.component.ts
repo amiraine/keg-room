@@ -30,8 +30,7 @@ export class EmployeeComponent implements OnInit {
   sellBeer(currentTap,currentTill){
     currentTap.volume --; //remove pint from volume
     currentTill.end += currentTap.price; //add price to till
-    return currentTap.volume;
-    return currentTill.end;
-    return currentTill.netProfit;
+    let soldBeer = [currentTap.volume,currentTill.end, currentTill.netProfit]
+    return soldBeer;
   }
 }

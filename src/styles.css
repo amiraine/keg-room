@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-li{
-  font-size: 20px;
+.age-limit{
+  text-align: center
+}
+sub{
+  color: darkBlue;
+}
+sub:hover{
+  cursor: pointer;
+  color: lime;
 }

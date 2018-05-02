@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Tapped In';
   selectedTap = null;
+
   editTap(clickedTap){
     this.selectedTap = clickedTap;
   }
