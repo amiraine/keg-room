@@ -9,7 +9,7 @@
   <body>
     <div class="age-limit" *ngIf="visible">
       <h1>Welcome to {{title}}</h1>
-      <h1>Are you over the age of 21?</h1>
+      <h2>Are you over the age of 21?</h2>
       <button type="button" (click)= 'clickYes()' class="btn btn-success">Yes</button>
       <button type="button" (click)= 'clickNo()' class="btn btn-danger">No</button>
       <p><sub>Click here if you are an employee.<input type="checkbox" ng-model="checked"></sub></p>
@@ -22,12 +22,12 @@
           <button type="button" class="btn btn-info">Submit</button>
         </form>
       </div>
-      <div class="employee-portal">
+      <div class="employee-portal" *ngIf="visibleEmployee">
         <div class="card">
           <div class="card-header">
             <h2>Tap Inventory</h2>
-            <h4>Current Till: ${{currentTill.start}}</h4>
-            <h4>Net profit: ${{currentTill.netProfit}}</h4>
+            <h4>Current Till: $<span [innerHTML]="till"></span></h4>
+            <h4>Net profit: $<span [innerHTML]="profit"></span></h4>
           </div>
           <div class="card-body">
             <ul>

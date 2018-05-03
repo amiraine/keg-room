@@ -7,6 +7,7 @@ import { Till } from './models/till.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
 //age check and login screen
   title = 'Tapped In';
@@ -14,6 +15,7 @@ export class AppComponent {
   login = false;
   clickYes(){
     this.visible = false;
+    this.visibleEmployee = true;
   }
   clickNo(){
     alert('You are not old enough to view this content! Please exit.');
@@ -31,6 +33,9 @@ export class AppComponent {
     new Taps('Passion Statement','2 Towns Ciderhouse',5,5.2,124),
     new Taps('Wild Plum', 'WildCraft Cidery',5,7.5,124),
   ];
+  till: Till[] = [
+    new Till(150,0,0)
+  ]
   //beer edits and adds
   refill(currentTap){
     if (currentTap.volume <=10){
@@ -52,11 +57,14 @@ export class AppComponent {
     let newTap = new Taps(name,brand,price,alcohol,124);
     this.taps.push(newTap);
   }
-  currentTill = new Till(150,0,0);
   //cash money
   sellBeer(currentTap){
+    let currentTill = new Till(150,0,0);
     this.selectedTap = currentTap;
     currentTap.volume --; //remove pint from volume
+    currentTill.start += currentTap.price;
+    currentTill.end += currentTap.price;
+    return currentTill;
   }
   // authenticate(userPin){
   //   const employeePin = 'beer';
