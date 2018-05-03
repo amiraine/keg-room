@@ -13,6 +13,8 @@ export class AppComponent {
   title = 'Tapped In';
   visible = true;
   login = false;
+  visibleEmployee = false;
+
   clickYes(){
     this.visible = false;
     this.visibleEmployee = true;
@@ -56,15 +58,16 @@ export class AppComponent {
   addNewTap(name,brand,price,alcohol,volume){
     let newTap = new Taps(name,brand,price,alcohol,124);
     this.taps.push(newTap);
+    this.addTap = false;
   }
   //cash money
+  currentTill = new Till(150,0,0);
   sellBeer(currentTap){
-    let currentTill = new Till(150,0,0);
-    this.selectedTap = currentTap;
+    this.currentTill;
     currentTap.volume --; //remove pint from volume
-    currentTill.start += currentTap.price;
-    currentTill.end += currentTap.price;
-    return currentTill;
+    this.currentTill.start += currentTap.price;
+    this.currentTill.end += currentTap.price;
+    return this.currentTill;
   }
   // authenticate(userPin){
   //   const employeePin = 'beer';

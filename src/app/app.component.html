@@ -26,8 +26,8 @@
         <div class="card">
           <div class="card-header">
             <h2>Tap Inventory</h2>
-            <h4>Current Till: $<span [innerHTML]="till"></span></h4>
-            <h4>Net profit: $<span [innerHTML]="profit"></span></h4>
+            <h4>Current Till: ${{sellBeer(currentTill).start}}</h4>
+            <h4>Net profit: ${{sellBeer(currentTill).netProfit}}</h4>
           </div>
           <div class="card-body">
             <ul>
@@ -35,20 +35,20 @@
             </ul>
             <button class="btn btn-primary" (click)="displayAddTap()">Add inventory</button>
             <div class="add-taps" *ngIf="addTap">
-              <form>
-                <input type="text" [(ngModel)]='new-name' placeholder="Beer name">
-                <input type="text" [(ngModel)]='new-brand' placeholder="Brand">
-                <input type="number" [(ngModel)]='new-price' placeholder="Price per pint">
-                <input type="number" [(ngModel)]='new-abv' placeholder="ABV%">
-                <button class="btn btn-secondary" (click)="addNewTap(new-name,newbrand,new-number,new-price,124)">Submit</button>
-              </form>
+              <h4>Add new keg</h4>
+              <input #inputName placeholder="Beer name">
+              <input #inputBrand placeholder="Brewery">
+              <input #inputPrice placeholder="Price per pint">
+              <input #inputApv placeholder="ABV%">
+              <button class="btn btn-secondary" (click)="addNewTap(inputName.value, inputBrand.value, inputPrice.value, inputApv.value,124)">Submit</button>
             </div>
             <div class="edit-taps" *ngIf="selectedTap">
-              <input [(ngModel)]="selectedTap.name" placeholder="Beer name">
-              <input [(ngModel)]="selectedTap.brand" placeholder="Brewery">
-              <input [(ngModel)]="selectedTap.price" placeholder="Brewery">
-              <input [(ngModel)]="selectedTap.alcohol" placeholder="ABV">
-              <input [(ngModel)]="selectedTap.volume" placeholder="Volume">
+              <h4>Edit keg info</h4>
+              <input [(ngModel)]="name" placeholder="Beer name" name="edit-name">
+              <input [(ngModel)]="brand" placeholder="Brewery" name="edit-name">
+              <input [(ngModel)]="price" placeholder="Brewery" name="edit-name">
+              <input [(ngModel)]="alcohol" placeholder="ABV" name="edit-name">
+              <input [(ngModel)]="volume" placeholder="Volume" name="edit-name">
               <button class="btn btn-info" (click)="finishEdit()">Finish</button>
             </div>
           </div>
