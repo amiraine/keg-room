@@ -18,12 +18,7 @@ body {
   padding-top:30%;
   padding-bottom: 70%;
 }
-.card-header{
-  background-color: rgb(155, 155, 155,0.8);
-}
-.card-body{
-  background-color: rgb(200, 200, 200,0.8);
-}
+
 .employee-login{
   display: none;
 }

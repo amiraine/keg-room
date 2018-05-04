@@ -44,11 +44,11 @@
             </div>
             <div class="edit-taps" *ngIf="selectedTap">
               <h4>Edit keg info</h4>
-              <input [(ngModel)]="name" placeholder="Beer name" name="edit-name">
-              <input [(ngModel)]="brand" placeholder="Brewery" name="edit-name">
-              <input [(ngModel)]="price" placeholder="Brewery" name="edit-name">
-              <input [(ngModel)]="alcohol" placeholder="ABV" name="edit-name">
-              <input [(ngModel)]="volume" placeholder="Volume" name="edit-name">
+              <input [(ngModel)]="selectedTap.name" name="edit-name">
+              <input [(ngModel)]="selectedTap.brand" name="edit-name">
+              <input [(ngModel)]="selectedTap.price" name="edit-name">
+              <input [(ngModel)]="selectedTap.alcohol" name="edit-name">
+              <input [(ngModel)]="selectedTap.volume" name="edit-name">
               <button class="btn btn-info" (click)="finishEdit()">Finish</button>
             </div>
           </div>

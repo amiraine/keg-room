@@ -1,1 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Ovo');
+.card-header{
+  opacity: 80%;
+}
+.card-body{
+  opacity: 80%;
+}
